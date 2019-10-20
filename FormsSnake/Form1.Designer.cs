@@ -88,7 +88,7 @@
             // snake0
             // 
             this.snake0.BackColor = System.Drawing.SystemColors.Info;
-            this.snake0.Location = new System.Drawing.Point(690, 96);
+            this.snake0.Location = new System.Drawing.Point(663, 208);
             this.snake0.Name = "snake0";
             this.snake0.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake0.Size = new System.Drawing.Size(32, 32);
@@ -98,7 +98,7 @@
             // 
             this.snake1.BackColor = System.Drawing.SystemColors.Info;
             this.snake1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.snake1.Location = new System.Drawing.Point(728, 96);
+            this.snake1.Location = new System.Drawing.Point(701, 208);
             this.snake1.Name = "snake1";
             this.snake1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake1.Size = new System.Drawing.Size(32, 32);
@@ -107,7 +107,7 @@
             // snake2
             // 
             this.snake2.BackColor = System.Drawing.SystemColors.Info;
-            this.snake2.Location = new System.Drawing.Point(766, 96);
+            this.snake2.Location = new System.Drawing.Point(739, 208);
             this.snake2.Name = "snake2";
             this.snake2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake2.Size = new System.Drawing.Size(32, 32);
@@ -121,7 +121,7 @@
             // Apple
             // 
             this.Apple.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Apple.Location = new System.Drawing.Point(96, 96);
+            this.Apple.Location = new System.Drawing.Point(69, 208);
             this.Apple.MaximumSize = new System.Drawing.Size(32, 32);
             this.Apple.MinimumSize = new System.Drawing.Size(32, 32);
             this.Apple.Name = "Apple";
@@ -131,7 +131,7 @@
             // snake4
             // 
             this.snake4.BackColor = System.Drawing.SystemColors.Info;
-            this.snake4.Location = new System.Drawing.Point(614, 96);
+            this.snake4.Location = new System.Drawing.Point(587, 208);
             this.snake4.Name = "snake4";
             this.snake4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake4.Size = new System.Drawing.Size(32, 32);
@@ -140,7 +140,7 @@
             // snake3
             // 
             this.snake3.BackColor = System.Drawing.SystemColors.Info;
-            this.snake3.Location = new System.Drawing.Point(652, 96);
+            this.snake3.Location = new System.Drawing.Point(625, 208);
             this.snake3.Name = "snake3";
             this.snake3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake3.Size = new System.Drawing.Size(32, 32);
@@ -149,7 +149,7 @@
             // snake6
             // 
             this.snake6.BackColor = System.Drawing.SystemColors.Info;
-            this.snake6.Location = new System.Drawing.Point(538, 96);
+            this.snake6.Location = new System.Drawing.Point(511, 208);
             this.snake6.Name = "snake6";
             this.snake6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake6.Size = new System.Drawing.Size(32, 32);
@@ -158,7 +158,7 @@
             // snake11
             // 
             this.snake11.BackColor = System.Drawing.SystemColors.Info;
-            this.snake11.Location = new System.Drawing.Point(348, 96);
+            this.snake11.Location = new System.Drawing.Point(321, 208);
             this.snake11.Name = "snake11";
             this.snake11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake11.Size = new System.Drawing.Size(32, 32);
@@ -167,7 +167,7 @@
             // snake12
             // 
             this.snake12.BackColor = System.Drawing.SystemColors.Info;
-            this.snake12.Location = new System.Drawing.Point(310, 96);
+            this.snake12.Location = new System.Drawing.Point(283, 208);
             this.snake12.Name = "snake12";
             this.snake12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake12.Size = new System.Drawing.Size(32, 32);
@@ -176,7 +176,7 @@
             // snake10
             // 
             this.snake10.BackColor = System.Drawing.SystemColors.Info;
-            this.snake10.Location = new System.Drawing.Point(386, 96);
+            this.snake10.Location = new System.Drawing.Point(359, 208);
             this.snake10.Name = "snake10";
             this.snake10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake10.Size = new System.Drawing.Size(32, 32);
@@ -185,7 +185,7 @@
             // snake13
             // 
             this.snake13.BackColor = System.Drawing.SystemColors.Info;
-            this.snake13.Location = new System.Drawing.Point(272, 96);
+            this.snake13.Location = new System.Drawing.Point(245, 208);
             this.snake13.Name = "snake13";
             this.snake13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake13.Size = new System.Drawing.Size(32, 32);
@@ -194,7 +194,7 @@
             // snake8
             // 
             this.snake8.BackColor = System.Drawing.SystemColors.Info;
-            this.snake8.Location = new System.Drawing.Point(462, 96);
+            this.snake8.Location = new System.Drawing.Point(435, 208);
             this.snake8.Name = "snake8";
             this.snake8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake8.Size = new System.Drawing.Size(32, 32);
@@ -203,7 +203,7 @@
             // snake9
             // 
             this.snake9.BackColor = System.Drawing.SystemColors.Info;
-            this.snake9.Location = new System.Drawing.Point(424, 96);
+            this.snake9.Location = new System.Drawing.Point(397, 208);
             this.snake9.Name = "snake9";
             this.snake9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake9.Size = new System.Drawing.Size(32, 32);
@@ -212,7 +212,7 @@
             // snake7
             // 
             this.snake7.BackColor = System.Drawing.SystemColors.Info;
-            this.snake7.Location = new System.Drawing.Point(500, 96);
+            this.snake7.Location = new System.Drawing.Point(473, 208);
             this.snake7.Name = "snake7";
             this.snake7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake7.Size = new System.Drawing.Size(32, 32);
@@ -221,7 +221,7 @@
             // snake5
             // 
             this.snake5.BackColor = System.Drawing.SystemColors.Info;
-            this.snake5.Location = new System.Drawing.Point(576, 96);
+            this.snake5.Location = new System.Drawing.Point(549, 208);
             this.snake5.Name = "snake5";
             this.snake5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake5.Size = new System.Drawing.Size(32, 32);
@@ -230,7 +230,7 @@
             // snake14
             // 
             this.snake14.BackColor = System.Drawing.SystemColors.Info;
-            this.snake14.Location = new System.Drawing.Point(234, 96);
+            this.snake14.Location = new System.Drawing.Point(207, 208);
             this.snake14.Name = "snake14";
             this.snake14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake14.Size = new System.Drawing.Size(32, 32);
@@ -239,7 +239,7 @@
             // snake15
             // 
             this.snake15.BackColor = System.Drawing.SystemColors.Info;
-            this.snake15.Location = new System.Drawing.Point(196, 96);
+            this.snake15.Location = new System.Drawing.Point(169, 208);
             this.snake15.Name = "snake15";
             this.snake15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake15.Size = new System.Drawing.Size(32, 32);
@@ -248,7 +248,7 @@
             // snake16
             // 
             this.snake16.BackColor = System.Drawing.SystemColors.Info;
-            this.snake16.Location = new System.Drawing.Point(158, 96);
+            this.snake16.Location = new System.Drawing.Point(131, 208);
             this.snake16.Name = "snake16";
             this.snake16.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake16.Size = new System.Drawing.Size(32, 32);
@@ -257,7 +257,7 @@
             // snake17
             // 
             this.snake17.BackColor = System.Drawing.SystemColors.Info;
-            this.snake17.Location = new System.Drawing.Point(158, 134);
+            this.snake17.Location = new System.Drawing.Point(131, 246);
             this.snake17.Name = "snake17";
             this.snake17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake17.Size = new System.Drawing.Size(32, 32);
@@ -266,7 +266,7 @@
             // snake18
             // 
             this.snake18.BackColor = System.Drawing.SystemColors.Info;
-            this.snake18.Location = new System.Drawing.Point(196, 134);
+            this.snake18.Location = new System.Drawing.Point(169, 246);
             this.snake18.Name = "snake18";
             this.snake18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake18.Size = new System.Drawing.Size(32, 32);
@@ -275,7 +275,7 @@
             // snake19
             // 
             this.snake19.BackColor = System.Drawing.SystemColors.Info;
-            this.snake19.Location = new System.Drawing.Point(234, 134);
+            this.snake19.Location = new System.Drawing.Point(207, 246);
             this.snake19.Name = "snake19";
             this.snake19.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake19.Size = new System.Drawing.Size(32, 32);
@@ -284,7 +284,7 @@
             // snake20
             // 
             this.snake20.BackColor = System.Drawing.SystemColors.Info;
-            this.snake20.Location = new System.Drawing.Point(272, 134);
+            this.snake20.Location = new System.Drawing.Point(245, 246);
             this.snake20.Name = "snake20";
             this.snake20.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake20.Size = new System.Drawing.Size(32, 32);
@@ -293,7 +293,7 @@
             // snake21
             // 
             this.snake21.BackColor = System.Drawing.SystemColors.Info;
-            this.snake21.Location = new System.Drawing.Point(310, 134);
+            this.snake21.Location = new System.Drawing.Point(283, 246);
             this.snake21.Name = "snake21";
             this.snake21.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake21.Size = new System.Drawing.Size(32, 32);
@@ -302,7 +302,7 @@
             // snake22
             // 
             this.snake22.BackColor = System.Drawing.SystemColors.Info;
-            this.snake22.Location = new System.Drawing.Point(348, 134);
+            this.snake22.Location = new System.Drawing.Point(321, 246);
             this.snake22.Name = "snake22";
             this.snake22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake22.Size = new System.Drawing.Size(32, 32);
@@ -311,7 +311,7 @@
             // snake23
             // 
             this.snake23.BackColor = System.Drawing.SystemColors.Info;
-            this.snake23.Location = new System.Drawing.Point(386, 134);
+            this.snake23.Location = new System.Drawing.Point(359, 246);
             this.snake23.Name = "snake23";
             this.snake23.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake23.Size = new System.Drawing.Size(32, 32);
@@ -320,7 +320,7 @@
             // snake24
             // 
             this.snake24.BackColor = System.Drawing.SystemColors.Info;
-            this.snake24.Location = new System.Drawing.Point(424, 134);
+            this.snake24.Location = new System.Drawing.Point(397, 246);
             this.snake24.Name = "snake24";
             this.snake24.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake24.Size = new System.Drawing.Size(32, 32);
@@ -329,7 +329,7 @@
             // snake25
             // 
             this.snake25.BackColor = System.Drawing.SystemColors.Info;
-            this.snake25.Location = new System.Drawing.Point(462, 134);
+            this.snake25.Location = new System.Drawing.Point(435, 246);
             this.snake25.Name = "snake25";
             this.snake25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake25.Size = new System.Drawing.Size(32, 32);
@@ -338,7 +338,7 @@
             // snake26
             // 
             this.snake26.BackColor = System.Drawing.SystemColors.Info;
-            this.snake26.Location = new System.Drawing.Point(500, 134);
+            this.snake26.Location = new System.Drawing.Point(473, 246);
             this.snake26.Name = "snake26";
             this.snake26.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake26.Size = new System.Drawing.Size(32, 32);
@@ -347,7 +347,7 @@
             // snake27
             // 
             this.snake27.BackColor = System.Drawing.SystemColors.Info;
-            this.snake27.Location = new System.Drawing.Point(538, 134);
+            this.snake27.Location = new System.Drawing.Point(511, 246);
             this.snake27.Name = "snake27";
             this.snake27.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake27.Size = new System.Drawing.Size(32, 32);
@@ -356,7 +356,7 @@
             // snake28
             // 
             this.snake28.BackColor = System.Drawing.SystemColors.Info;
-            this.snake28.Location = new System.Drawing.Point(576, 134);
+            this.snake28.Location = new System.Drawing.Point(549, 246);
             this.snake28.Name = "snake28";
             this.snake28.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake28.Size = new System.Drawing.Size(32, 32);
@@ -365,7 +365,7 @@
             // snake29
             // 
             this.snake29.BackColor = System.Drawing.SystemColors.Info;
-            this.snake29.Location = new System.Drawing.Point(614, 134);
+            this.snake29.Location = new System.Drawing.Point(587, 246);
             this.snake29.Name = "snake29";
             this.snake29.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake29.Size = new System.Drawing.Size(32, 32);
@@ -374,7 +374,7 @@
             // snake30
             // 
             this.snake30.BackColor = System.Drawing.SystemColors.Info;
-            this.snake30.Location = new System.Drawing.Point(652, 134);
+            this.snake30.Location = new System.Drawing.Point(625, 246);
             this.snake30.Name = "snake30";
             this.snake30.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake30.Size = new System.Drawing.Size(32, 32);
@@ -383,7 +383,7 @@
             // snake31
             // 
             this.snake31.BackColor = System.Drawing.SystemColors.Info;
-            this.snake31.Location = new System.Drawing.Point(690, 134);
+            this.snake31.Location = new System.Drawing.Point(663, 246);
             this.snake31.Name = "snake31";
             this.snake31.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake31.Size = new System.Drawing.Size(32, 32);
@@ -392,7 +392,7 @@
             // snake32
             // 
             this.snake32.BackColor = System.Drawing.SystemColors.Info;
-            this.snake32.Location = new System.Drawing.Point(729, 134);
+            this.snake32.Location = new System.Drawing.Point(702, 246);
             this.snake32.Name = "snake32";
             this.snake32.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake32.Size = new System.Drawing.Size(32, 32);
@@ -401,7 +401,7 @@
             // snake33
             // 
             this.snake33.BackColor = System.Drawing.SystemColors.Info;
-            this.snake33.Location = new System.Drawing.Point(766, 134);
+            this.snake33.Location = new System.Drawing.Point(739, 246);
             this.snake33.Name = "snake33";
             this.snake33.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake33.Size = new System.Drawing.Size(32, 32);
@@ -410,7 +410,7 @@
             // snake34
             // 
             this.snake34.BackColor = System.Drawing.SystemColors.Info;
-            this.snake34.Location = new System.Drawing.Point(766, 172);
+            this.snake34.Location = new System.Drawing.Point(739, 284);
             this.snake34.Name = "snake34";
             this.snake34.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake34.Size = new System.Drawing.Size(32, 32);
@@ -419,7 +419,7 @@
             // snake35
             // 
             this.snake35.BackColor = System.Drawing.SystemColors.Info;
-            this.snake35.Location = new System.Drawing.Point(729, 172);
+            this.snake35.Location = new System.Drawing.Point(702, 284);
             this.snake35.Name = "snake35";
             this.snake35.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake35.Size = new System.Drawing.Size(32, 32);
@@ -428,7 +428,7 @@
             // snake36
             // 
             this.snake36.BackColor = System.Drawing.SystemColors.Info;
-            this.snake36.Location = new System.Drawing.Point(691, 172);
+            this.snake36.Location = new System.Drawing.Point(664, 284);
             this.snake36.Name = "snake36";
             this.snake36.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake36.Size = new System.Drawing.Size(32, 32);
@@ -437,7 +437,7 @@
             // snake37
             // 
             this.snake37.BackColor = System.Drawing.SystemColors.Info;
-            this.snake37.Location = new System.Drawing.Point(653, 172);
+            this.snake37.Location = new System.Drawing.Point(626, 284);
             this.snake37.Name = "snake37";
             this.snake37.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake37.Size = new System.Drawing.Size(32, 32);
@@ -446,7 +446,7 @@
             // snake38
             // 
             this.snake38.BackColor = System.Drawing.SystemColors.Info;
-            this.snake38.Location = new System.Drawing.Point(614, 172);
+            this.snake38.Location = new System.Drawing.Point(587, 284);
             this.snake38.Name = "snake38";
             this.snake38.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake38.Size = new System.Drawing.Size(32, 32);
@@ -455,7 +455,7 @@
             // snake39
             // 
             this.snake39.BackColor = System.Drawing.SystemColors.Info;
-            this.snake39.Location = new System.Drawing.Point(576, 172);
+            this.snake39.Location = new System.Drawing.Point(549, 284);
             this.snake39.Name = "snake39";
             this.snake39.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake39.Size = new System.Drawing.Size(32, 32);
@@ -464,7 +464,7 @@
             // snake40
             // 
             this.snake40.BackColor = System.Drawing.SystemColors.Info;
-            this.snake40.Location = new System.Drawing.Point(538, 172);
+            this.snake40.Location = new System.Drawing.Point(511, 284);
             this.snake40.Name = "snake40";
             this.snake40.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake40.Size = new System.Drawing.Size(32, 32);
@@ -473,7 +473,7 @@
             // snake41
             // 
             this.snake41.BackColor = System.Drawing.SystemColors.Info;
-            this.snake41.Location = new System.Drawing.Point(500, 172);
+            this.snake41.Location = new System.Drawing.Point(473, 284);
             this.snake41.Name = "snake41";
             this.snake41.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake41.Size = new System.Drawing.Size(32, 32);
@@ -482,7 +482,7 @@
             // snake42
             // 
             this.snake42.BackColor = System.Drawing.SystemColors.Info;
-            this.snake42.Location = new System.Drawing.Point(462, 172);
+            this.snake42.Location = new System.Drawing.Point(435, 284);
             this.snake42.Name = "snake42";
             this.snake42.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake42.Size = new System.Drawing.Size(32, 32);
@@ -491,7 +491,7 @@
             // snake43
             // 
             this.snake43.BackColor = System.Drawing.SystemColors.Info;
-            this.snake43.Location = new System.Drawing.Point(424, 172);
+            this.snake43.Location = new System.Drawing.Point(397, 284);
             this.snake43.Name = "snake43";
             this.snake43.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake43.Size = new System.Drawing.Size(32, 32);
@@ -500,7 +500,7 @@
             // snake44
             // 
             this.snake44.BackColor = System.Drawing.SystemColors.Info;
-            this.snake44.Location = new System.Drawing.Point(386, 172);
+            this.snake44.Location = new System.Drawing.Point(359, 284);
             this.snake44.Name = "snake44";
             this.snake44.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake44.Size = new System.Drawing.Size(32, 32);
@@ -509,7 +509,7 @@
             // snake45
             // 
             this.snake45.BackColor = System.Drawing.SystemColors.Info;
-            this.snake45.Location = new System.Drawing.Point(348, 172);
+            this.snake45.Location = new System.Drawing.Point(321, 284);
             this.snake45.Name = "snake45";
             this.snake45.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake45.Size = new System.Drawing.Size(32, 32);
@@ -518,7 +518,7 @@
             // snake46
             // 
             this.snake46.BackColor = System.Drawing.SystemColors.Info;
-            this.snake46.Location = new System.Drawing.Point(310, 172);
+            this.snake46.Location = new System.Drawing.Point(283, 284);
             this.snake46.Name = "snake46";
             this.snake46.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake46.Size = new System.Drawing.Size(32, 32);
@@ -527,7 +527,7 @@
             // snake47
             // 
             this.snake47.BackColor = System.Drawing.SystemColors.Info;
-            this.snake47.Location = new System.Drawing.Point(272, 172);
+            this.snake47.Location = new System.Drawing.Point(245, 284);
             this.snake47.Name = "snake47";
             this.snake47.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake47.Size = new System.Drawing.Size(32, 32);
@@ -536,7 +536,7 @@
             // snake48
             // 
             this.snake48.BackColor = System.Drawing.SystemColors.Info;
-            this.snake48.Location = new System.Drawing.Point(234, 172);
+            this.snake48.Location = new System.Drawing.Point(207, 284);
             this.snake48.Name = "snake48";
             this.snake48.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake48.Size = new System.Drawing.Size(32, 32);
@@ -545,7 +545,7 @@
             // snake49
             // 
             this.snake49.BackColor = System.Drawing.SystemColors.Info;
-            this.snake49.Location = new System.Drawing.Point(196, 172);
+            this.snake49.Location = new System.Drawing.Point(169, 284);
             this.snake49.Name = "snake49";
             this.snake49.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake49.Size = new System.Drawing.Size(32, 32);
@@ -554,7 +554,7 @@
             // snake50
             // 
             this.snake50.BackColor = System.Drawing.SystemColors.Info;
-            this.snake50.Location = new System.Drawing.Point(158, 172);
+            this.snake50.Location = new System.Drawing.Point(131, 284);
             this.snake50.Name = "snake50";
             this.snake50.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.snake50.Size = new System.Drawing.Size(32, 32);
@@ -562,13 +562,14 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 14F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(761, 9);
+            this.label1.Location = new System.Drawing.Point(757, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 36);
-            this.label1.TabIndex = 60;
+            this.label1.TabIndex = 2;
             this.label1.Text = "0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -579,6 +580,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 748);
+            this.Controls.Add(this.Apple);
             this.Controls.Add(this.snake50);
             this.Controls.Add(this.snake49);
             this.Controls.Add(this.snake48);
@@ -616,7 +618,6 @@
             this.Controls.Add(this.snake16);
             this.Controls.Add(this.snake15);
             this.Controls.Add(this.snake14);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.snake5);
             this.Controls.Add(this.snake7);
             this.Controls.Add(this.snake9);
@@ -628,10 +629,10 @@
             this.Controls.Add(this.snake6);
             this.Controls.Add(this.snake3);
             this.Controls.Add(this.snake4);
-            this.Controls.Add(this.Apple);
             this.Controls.Add(this.snake2);
             this.Controls.Add(this.snake1);
             this.Controls.Add(this.snake0);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(800, 748);
