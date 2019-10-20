@@ -14,18 +14,18 @@ namespace FormsSnake
     public partial class Form1 : Form
     {
         public const int Space = 576;
-        public Point directionSnake  = new Point(32, 0);
+        public Point directionSnake = new Point(32, 0);
         public Point hide = new Point(600, 600);
         public int lengthSnake = 2;
 
         public List<Panel> snake = new List<Panel>();
         public List<Point> pointsSnake = new List<Point>();
 
-        
+
         public Form1()
         {
             InitializeComponent();
-            
+
             snake.Add(snake0); snake.Add(snake1); snake.Add(snake2); snake.Add(snake3); snake.Add(snake4); snake.Add(snake5);
             snake.Add(snake6); snake.Add(snake7); snake.Add(snake8); snake.Add(snake9); snake.Add(snake10); snake.Add(snake11);
             snake.Add(snake12); snake.Add(snake13); snake.Add(snake14); snake.Add(snake15); snake.Add(snake16); snake.Add(snake17);
@@ -55,28 +55,28 @@ namespace FormsSnake
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.W)
+            if (e.KeyData == Keys.W || e.KeyData == Keys.Up)
             {
-                if(directionSnake != new Point(0, 32))
+                if (directionSnake != new Point(0, 32))
                 {
                     directionSnake = new Point(0, -32);
-                }  
+                }
             }
-            else if (e.KeyData == Keys.S)
+            else if (e.KeyData == Keys.S || e.KeyData == Keys.Down)
             {
                 if (directionSnake != new Point(0, -32))
                 {
                     directionSnake = new Point(0, 32);
                 }
             }
-            else if (e.KeyData == Keys.A)
+            else if (e.KeyData == Keys.A || e.KeyData == Keys.Left)
             {
                 if (directionSnake != new Point(32, 0))
                 {
                     directionSnake = new Point(-32, 0);
-                }  
+                }
             }
-            else if (e.KeyData == Keys.D)
+            else if (e.KeyData == Keys.D || e.KeyData == Keys.Right)
             {
                 if (directionSnake != new Point(-32, 0))
                 {
