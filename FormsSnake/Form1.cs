@@ -21,6 +21,7 @@ namespace FormsSnake
 
         public List<Panel> snake = new List<Panel>();
         public List<Point> pointsSnake = new List<Point>();
+        public Random rand = new Random(Guid.NewGuid().GetHashCode());
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         extern static void ReleaseCapture();
@@ -45,9 +46,15 @@ namespace FormsSnake
             */
 
             IEnumerable<Control> controls = Controls.Cast<Control>();
-            snake.AddRange(controls.Where(x => x.Name.Contains("snake") && x is Panel).ToArray().Cast<Panel>().Reverse()); 
+            snake.AddRange(controls.Where(x => x.Name.Contains("snake") && x is Panel).ToArray().Cast<Panel>().Reverse());
 
-            pointsSnake.Add(new Point(96, 64)); pointsSnake.Add(new Point(64, 64)); pointsSnake.Add(new Point(32, 64));
+            pointsSnake.AddRange(
+                new[]{
+                new Point(96, 64),
+                new Point(64, 64),
+                new Point(32, 64)
+                });
+            //pointsSnake.Add(new Point(96, 64)); pointsSnake.Add(new Point(64, 64)); pointsSnake.Add(new Point(32, 64));
             for (int i = 2; i <= 50; i++)
             {
                 pointsSnake.Add(hide);
@@ -137,7 +144,7 @@ namespace FormsSnake
 
                 if (snake0.Location == Apple.Location)
                 {
-                    var rand = new Random();
+                    
                     Apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
 
                     if(lengthSnake < snake.Count - 1)
