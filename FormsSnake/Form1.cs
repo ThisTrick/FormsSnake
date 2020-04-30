@@ -140,16 +140,7 @@ namespace FormsSnake
 
                 if (snake0.Location == Apple.Location)
                 {
-                    
-                    Apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
-
-                    if(lengthSnake < snake.Count - 1)
-                    {
-                        lengthSnake += 1;
-                        label1.Text = (lengthSnake - 2).ToString();
-                        pointsSnake.Add(new Point(snake[lengthSnake - 1].Location.X, snake[lengthSnake - 1].Location.Y));
-                        snake[lengthSnake].Location = pointsSnake[lengthSnake];
-                    }
+                    EatAnApple();
                 }
             }
             else
@@ -213,7 +204,20 @@ namespace FormsSnake
                 }
             }
         }
+        /// <summary>
+        /// Реализация логики поедания яблока змеей. 
+        /// </summary>
+        private void EatAnApple()
+        {
+            Apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
 
-
+            if (lengthSnake < snake.Count - 1)
+            {
+                lengthSnake += 1;
+                label1.Text = (lengthSnake - 2).ToString();
+                pointsSnake.Add(new Point(snake[lengthSnake - 1].Location.X, snake[lengthSnake - 1].Location.Y));
+                snake[lengthSnake].Location = pointsSnake[lengthSnake];
+            }
+        }
     }
 }
