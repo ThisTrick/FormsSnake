@@ -124,12 +124,9 @@ namespace FormsSnake
                 SnakeMoving();
                 /*
                 SnakeDeath();
-
-                if (snake[0].Location == Apple.Location)
-                {
-                    EatAnApple();
-                }
                 */
+                EatAnApple();
+                
             }
             else
             {
@@ -224,14 +221,14 @@ namespace FormsSnake
         /// </summary>
         private void EatAnApple()
         {
-            apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
-
-            if (lengthSnake < snake.Count - 1)
+            if (snake[0].Location == apple.Location)
             {
-                lengthSnake += 1;
+                apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
+
+                lengthSnake++;
                 Count.Text = (lengthSnake - 2).ToString();
-                pointsSnake.Add(new Point(snake[lengthSnake - 1].Location.X, snake[lengthSnake - 1].Location.Y));
-                snake[lengthSnake].Location = pointsSnake[lengthSnake];
+                var location = new Point(snake[lengthSnake - 1].Location.X, snake[lengthSnake - 1].Location.Y);
+                snake.Add(CreateSnakeItem(location));
             }
         }
 
