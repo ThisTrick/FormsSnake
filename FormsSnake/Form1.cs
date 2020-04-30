@@ -24,6 +24,7 @@ namespace FormsSnake
 
         private int space;
         private Point directionSnake;
+        private int lengthSnake;
         private List<Panel> snake;
         private Panel apple;
         public Random rand;
@@ -43,6 +44,7 @@ namespace FormsSnake
             directionTop = new Point(0, -32);
             directionBottom = new Point(0, 32);
             directionSnake = directionLeft;
+            lengthSnake = 2;
             snake = new List<Panel>() {
                 CreateSnakeItem(new Point(96, 64)),
                 CreateSnakeItem(new Point(64, 64)),
@@ -104,7 +106,6 @@ namespace FormsSnake
             if (snake[0].Location.X <= space && snake[0].Location.Y <= space && snake[0].Location.X >= 0 && snake[0].Location.Y >= 0)
             {
                 SnakeMoving();
-                SnakeDeath();
                 EatAnApple();
             }
             else
@@ -150,24 +151,10 @@ namespace FormsSnake
         }
 
         /// <summary>
-        /// Удар змейки об себя.
+        /// Смерть змейки.
         /// Теряет все блоки кроме первых 3.
         /// </summary>
         private void SnakeDeath()
-        {
-            for (int i = snake.Count() - 1; i > 0; i--)
-            {
-                if (snake[0].Location == snake[i].Location)
-                {
-                    SnakeHide();
-                    break;
-                }
-            }
-        }
-        /// <summary>
-        /// Скрывает компоненты змейки.
-        /// </summary>
-        private void SnakeHide()
         {
             for (int j = snake.Count() - 1; j > 2; j--)
             {
@@ -186,7 +173,12 @@ namespace FormsSnake
             {
                 var tmp = snake[i - 1].Location;
                 snake[i].Location = tmp;
-            }
+                if (i != 1 && snake[0].Location == snake[i].Location)
+                {
+                    SnakeDeath();
+                    return;
+                }
+            } 
             snake[0].Location = new Point(snake[0].Location.X + directionSnake.X, snake[0].Location.Y + directionSnake.Y);
         }
 
@@ -198,6 +190,7 @@ namespace FormsSnake
             if (snake[0].Location == apple.Location)
             {
                 apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
+
                 var location = new Point(snake[snake.Count() - 2].Location.X, snake[snake.Count() - 2].Location.Y);
                 snake.Add(CreateSnakeItem(location));
                 Count.Text = (snake.Count() - 3).ToString();
@@ -209,7 +202,7 @@ namespace FormsSnake
         /// </summary>
         private void SnakeStartingPoint()
         {
-            SnakeHide();
+            SnakeDeath();
             snake[0].Location = new Point(96, 64);
             snake[1].Location = new Point(64, 64);
             snake[2].Location = new Point(32, 64);
