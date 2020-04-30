@@ -76,7 +76,11 @@ namespace FormsSnake
 
         }
 
-
+        /// <summary>
+        /// Управление змейкой.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.W || e.KeyData == Keys.Up)
@@ -118,35 +122,8 @@ namespace FormsSnake
             
             if (snake0.Location.X <= space && snake0.Location.Y <= space && snake0.Location.X >= 0 && snake0.Location.Y >= 0)
             {
-                for (int i = lengthSnake; i >= 0 ; i--)
-                {
-                    if (i == 0)
-                    {
-                        pointsSnake[i] = new Point(pointsSnake[i].X + directionSnake.X, pointsSnake[i].Y + directionSnake.Y);
-                    }
-                    else
-                    {
-                        pointsSnake[i] = snake[i - 1].Location;
-                    }
-                    snake[i].Location = pointsSnake[i];
-                    
-                }
-
-                for(int i = lengthSnake; i > 0; i--)
-                {
-                    if(pointsSnake[0] == pointsSnake[i])
-                    {
-                        for (int j = 50; j > 2; j--)
-                        {
-                            snake[j].Location = hide;
-                            pointsSnake[j] = hide;
-                        }
-                        lengthSnake = 2;
-                        label1.Text = (lengthSnake - 2).ToString();
-                        break;
-                    }
-                }
-
+                SnakeMoving();
+                SnakeDeath();
 
                 if (snake0.Location == Apple.Location)
                 {
@@ -215,6 +192,42 @@ namespace FormsSnake
                 }
             }
         }
+        /// <summary>
+        /// Удар змейки об себя.
+        /// Теряет все блоки кроме первых 3.
+        /// </summary>
+        private void SnakeDeath()
+        {
+            for (int i = lengthSnake; i > 0; i--)
+            {
+                if (pointsSnake[0] == pointsSnake[i])
+                {
+                    for (int j = 50; j > 2; j--)
+                    {
+                        snake[j].Location = hide;
+                        pointsSnake[j] = hide;
+                    }
+                    lengthSnake = 2;
+                    label1.Text = (lengthSnake - 2).ToString();
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Реализация передвижения змейки.
+        /// </summary>
+        private void SnakeMoving()
+        {
+            for (int i = lengthSnake; i > 0; i--)
+            {
+                pointsSnake[i] = snake[i - 1].Location;
+                snake[i].Location = pointsSnake[i];
+            }
+            pointsSnake[0] = new Point(pointsSnake[0].X + directionSnake.X, pointsSnake[0].Y + directionSnake.Y);
+            snake[0].Location = pointsSnake[0];
+        }
+
         /// <summary>
         /// Реализация логики поедания яблока змеей. 
         /// </summary>
