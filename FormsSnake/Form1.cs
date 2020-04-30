@@ -10,34 +10,47 @@ namespace FormsSnake
 {
     public partial class Form1 : Form
     {
-        private const int Space = 576;
-        public Point directionSnake = new Point(32, 0);
-        public Point hide = new Point(600, 600);
-        public int lengthSnake = 2;
 
-        public List<Panel> snake = new List<Panel>();
-        public List<Point> pointsSnake = new List<Point>();
-        public Random rand = new Random(Guid.NewGuid().GetHashCode());
-
+        #region Перемещение окна
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        extern static void SendMessage(IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        #endregion
+
+        private int space;
+        private Point directionSnake;
+        private Point hide;
+        private int lengthSnake;
+        private List<Panel> snake;
+        public List<Point> pointsSnake;
+        public Random rand;
 
 
         public Form1()
         {
             InitializeComponent();
-            IEnumerable<Control> controls = Controls.Cast<Control>();
-            snake.AddRange(controls.Where(x => x.Name.Contains("snake") && x is Panel).ToArray().Cast<Panel>().Reverse());
-
-            pointsSnake.AddRange(
-                new[]{
+            space = 576;
+            directionSnake = new Point(32, 0);
+            hide = new Point(600, 600);
+            lengthSnake = 2;
+            snake = new List<Panel>();
+            pointsSnake = new List<Point>(){
                 new Point(96, 64),
                 new Point(64, 64),
                 new Point(32, 64)
-                });
+                };
+            rand = new Random(Guid.NewGuid().GetHashCode());
+
+            IEnumerable<Control> controls = Controls.Cast<Control>();
+            snake.AddRange(controls.Where(x => x.Name.Contains("snake") && x is Panel).ToArray().Cast<Panel>().Reverse());
+
             for (int i = 2; i <= 50; i++)
             {
                 pointsSnake.Add(hide);
@@ -93,7 +106,7 @@ namespace FormsSnake
         private void SnakeGo_Tick(object sender, EventArgs e)
         {
             
-            if (snake0.Location.X <= Space && snake0.Location.Y <= Space && snake0.Location.X >= 0 && snake0.Location.Y >= 0)
+            if (snake0.Location.X <= space && snake0.Location.Y <= space && snake0.Location.X >= 0 && snake0.Location.Y >= 0)
             {
                 for (int i = lengthSnake; i >= 0 ; i--)
                 {
@@ -141,9 +154,9 @@ namespace FormsSnake
             }
             else
             {
-                if (snake[0].Location.X > Space)
+                if (snake[0].Location.X > space)
                 {
-                    if (snake[0].Location.Y == Space)
+                    if (snake[0].Location.Y == space)
                     {
                         pointsSnake[0] =  new Point(pointsSnake[0].X - 32, pointsSnake[0].Y - 32);
                     }
@@ -155,7 +168,7 @@ namespace FormsSnake
                 }
                 else if (snake[0].Location.X < 0)
                 {
-                    if (snake[0].Location.Y == Space)
+                    if (snake[0].Location.Y == space)
                     {
                         pointsSnake[0] = new Point(pointsSnake[0].X + 32, pointsSnake[0].Y - 32);
                     }
@@ -166,9 +179,9 @@ namespace FormsSnake
                     
                     directionSnake = new Point(32, 0);
                 }
-                else if (snake[0].Location.Y > Space)
+                else if (snake[0].Location.Y > space)
                 {
-                    if (snake[0].Location.X == Space)
+                    if (snake[0].Location.X == space)
                     {
                         pointsSnake[0] = new Point(pointsSnake[0].X - 32, pointsSnake[0].Y - 32);
                     }
@@ -180,7 +193,7 @@ namespace FormsSnake
                 }
                 else if (snake[0].Location.Y < 0)
                 {
-                    if (snake[0].Location.X == Space)
+                    if (snake[0].Location.X == space)
                     {
                         pointsSnake[0] = new Point(pointsSnake[0].X - 32, pointsSnake[0].Y + 32);
                     }
@@ -201,10 +214,6 @@ namespace FormsSnake
             }
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {           
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
+
     }
 }
