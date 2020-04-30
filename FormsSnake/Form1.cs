@@ -125,71 +125,15 @@ namespace FormsSnake
                 SnakeMoving();
                 SnakeDeath();
 
-                if (snake0.Location == Apple.Location)
+                if (snake[0].Location == Apple.Location)
                 {
                     EatAnApple();
                 }
             }
             else
             {
-                if (snake[0].Location.X > space)
-                {
-                    if (snake[0].Location.Y == space)
-                    {
-                        pointsSnake[0] =  new Point(pointsSnake[0].X - 32, pointsSnake[0].Y - 32);
-                    }
-                    else
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X - 32, pointsSnake[0].Y + 32);
-                    }
-                    directionSnake = new Point(-32, 0);
-                }
-                else if (snake[0].Location.X < 0)
-                {
-                    if (snake[0].Location.Y == space)
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X + 32, pointsSnake[0].Y - 32);
-                    }
-                    else
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X + 32, pointsSnake[0].Y + 32);
-                    }
-                    
-                    directionSnake = new Point(32, 0);
-                }
-                else if (snake[0].Location.Y > space)
-                {
-                    if (snake[0].Location.X == space)
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X - 32, pointsSnake[0].Y - 32);
-                    }
-                    else
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X + 32, pointsSnake[0].Y - 32);
-                    }
-                    directionSnake = new Point(0, -32);
-                }
-                else if (snake[0].Location.Y < 0)
-                {
-                    if (snake[0].Location.X == space)
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X - 32, pointsSnake[0].Y + 32);
-                    }
-                    else
-                    {
-                        pointsSnake[0] = new Point(pointsSnake[0].X + 32, pointsSnake[0].Y + 32);
-                    }
-                    directionSnake = new Point(0, 32);
-                }
-                else
-                {
-                    throw new ApplicationException();
-                }
-
-                for(int i = lengthSnake; i >= 0; i--)
-                {
-                    snake[i].Location = pointsSnake[i];
-                }
+                SnakeHide();
+                SnakeStartingPoint();
             }
         }
         /// <summary>
@@ -202,16 +146,23 @@ namespace FormsSnake
             {
                 if (pointsSnake[0] == pointsSnake[i])
                 {
-                    for (int j = 50; j > 2; j--)
-                    {
-                        snake[j].Location = hide;
-                        pointsSnake[j] = hide;
-                    }
-                    lengthSnake = 2;
-                    label1.Text = (lengthSnake - 2).ToString();
+                    SnakeHide();
                     break;
                 }
             }
+        }
+        /// <summary>
+        /// Скрывает компоненты змейки.
+        /// </summary>
+        private void SnakeHide()
+        {
+            for (int j = 50; j > 2; j--)
+            {
+                snake[j].Location = hide;
+                pointsSnake[j] = hide;
+            }
+            lengthSnake = 2;
+            label1.Text = (lengthSnake - 2).ToString();
         }
 
         /// <summary>
@@ -242,6 +193,17 @@ namespace FormsSnake
                 pointsSnake.Add(new Point(snake[lengthSnake - 1].Location.X, snake[lengthSnake - 1].Location.Y));
                 snake[lengthSnake].Location = pointsSnake[lengthSnake];
             }
+        }
+
+        private void SnakeStartingPoint()
+        {
+            snake[0].Location = new Point(96, 64);
+            pointsSnake[0] = new Point(96, 64);
+            snake[1].Location = new Point(64, 64);
+            pointsSnake[1] = new Point(64, 64);
+            snake[2].Location = new Point(32, 64);
+            pointsSnake[2] = new Point(32, 64);
+            directionSnake = directionLeft;
         }
     }
 }
