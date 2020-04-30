@@ -21,14 +21,11 @@ namespace FormsSnake
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
         #endregion
-
         private int space;
         private Point directionSnake;
-        private int lengthSnake;
         private List<Panel> snake;
         private Panel apple;
         public Random rand;
-
         private Point directionLeft;
         private Point directionRight;
         private Point directionTop;
@@ -44,7 +41,6 @@ namespace FormsSnake
             directionTop = new Point(0, -32);
             directionBottom = new Point(0, 32);
             directionSnake = directionLeft;
-            lengthSnake = 2;
             snake = new List<Panel>() {
                 CreateSnakeItem(new Point(96, 64)),
                 CreateSnakeItem(new Point(64, 64)),
@@ -190,7 +186,6 @@ namespace FormsSnake
             if (snake[0].Location == apple.Location)
             {
                 apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
-
                 var location = new Point(snake[snake.Count() - 2].Location.X, snake[snake.Count() - 2].Location.Y);
                 snake.Add(CreateSnakeItem(location));
                 Count.Text = (snake.Count() - 3).ToString();
