@@ -24,12 +24,15 @@ namespace FormsSnake
         }
         #endregion
 
+        public List<Point> pointsSnake;
+        private Point hide;
+
+
         private int space;
         private Point directionSnake;
-        private Point hide;
         private int lengthSnake;
         private List<Panel> snake;
-        public List<Point> pointsSnake;
+        private Panel apple;
         public Random rand;
 
         private Point directionLeft;
@@ -66,9 +69,8 @@ namespace FormsSnake
 
             rand = new Random(Guid.NewGuid().GetHashCode());
 
-            snake0.Visible = true;
             Count.Text = (lengthSnake - 2).ToString();
-            Apple.Location = new Point(96, 96);
+            apple = CreateApplePanel(new Point(96, 96));
 
         }
 
@@ -117,7 +119,7 @@ namespace FormsSnake
         private void SnakeGo_Tick(object sender, EventArgs e)
         {
             
-            if (snake0.Location.X <= space && snake0.Location.Y <= space && snake0.Location.X >= 0 && snake0.Location.Y >= 0)
+            if (snake[0].Location.X <= space && snake[0].Location.Y <= space && snake[0].Location.X >= 0 && snake[0].Location.Y >= 0)
             {
                 SnakeMoving();
                 /*
@@ -136,6 +138,18 @@ namespace FormsSnake
                 SnakeStartingPoint();
                 */
             }
+        }
+        /// <summary>
+        /// Создает Яблоко типа Panel 
+        /// </summary>
+        /// <param name="location">Локация объекта Panel</param>
+        /// <returns></returns>
+        private Panel CreateApplePanel(Point location)
+        {
+            var applePanel = CreatePanel(location);
+            applePanel.BackColor = SystemColors.Highlight;
+            applePanel.Name = "Apple";
+            return applePanel;
         }
         /// <summary>
         /// Создает панель для части змейки. 
@@ -210,7 +224,7 @@ namespace FormsSnake
         /// </summary>
         private void EatAnApple()
         {
-            Apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
+            apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
 
             if (lengthSnake < snake.Count - 1)
             {

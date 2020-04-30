@@ -29,56 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.snake0 = new System.Windows.Forms.Panel();
-            this.snake1 = new System.Windows.Forms.Panel();
-            this.snake2 = new System.Windows.Forms.Panel();
             this.SnakeGo = new System.Windows.Forms.Timer(this.components);
-            this.Apple = new System.Windows.Forms.Panel();
             this.Count = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // snake0
-            // 
-            this.snake0.BackColor = System.Drawing.SystemColors.Info;
-            this.snake0.Location = new System.Drawing.Point(663, 208);
-            this.snake0.Name = "snake0";
-            this.snake0.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.snake0.Size = new System.Drawing.Size(32, 32);
-            this.snake0.TabIndex = 0;
-            // 
-            // snake1
-            // 
-            this.snake1.BackColor = System.Drawing.SystemColors.Info;
-            this.snake1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.snake1.Location = new System.Drawing.Point(701, 208);
-            this.snake1.Name = "snake1";
-            this.snake1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.snake1.Size = new System.Drawing.Size(32, 32);
-            this.snake1.TabIndex = 1;
-            // 
-            // snake2
-            // 
-            this.snake2.BackColor = System.Drawing.SystemColors.Info;
-            this.snake2.Location = new System.Drawing.Point(739, 208);
-            this.snake2.Name = "snake2";
-            this.snake2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.snake2.Size = new System.Drawing.Size(32, 32);
-            this.snake2.TabIndex = 2;
             // 
             // SnakeGo
             // 
             this.SnakeGo.Enabled = true;
             this.SnakeGo.Tick += new System.EventHandler(this.SnakeGo_Tick);
-            // 
-            // Apple
-            // 
-            this.Apple.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Apple.Location = new System.Drawing.Point(69, 208);
-            this.Apple.MaximumSize = new System.Drawing.Size(32, 32);
-            this.Apple.MinimumSize = new System.Drawing.Size(32, 32);
-            this.Apple.Name = "Apple";
-            this.Apple.Size = new System.Drawing.Size(32, 32);
-            this.Apple.TabIndex = 3;
             // 
             // Count
             // 
@@ -100,10 +58,6 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 748);
-            this.Controls.Add(this.Apple);
-            this.Controls.Add(this.snake2);
-            this.Controls.Add(this.snake1);
-            this.Controls.Add(this.snake0);
             this.Controls.Add(this.Count);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -118,12 +72,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel snake0;
-        private System.Windows.Forms.Panel snake1;
-        private System.Windows.Forms.Panel snake2;
         private System.Windows.Forms.Timer SnakeGo;
-        private System.Windows.Forms.Panel Apple;
         private System.Windows.Forms.Label Count;
     }
 }
