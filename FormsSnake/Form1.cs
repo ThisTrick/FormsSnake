@@ -32,6 +32,10 @@ namespace FormsSnake
         public List<Point> pointsSnake;
         public Random rand;
 
+        private Point directionLeft;
+        private Point directionRight;
+        private Point directionTop;
+        private Point directionBottom;
 
         public Form1()
         {
@@ -47,6 +51,12 @@ namespace FormsSnake
                 new Point(32, 64)
                 };
             rand = new Random(Guid.NewGuid().GetHashCode());
+
+            directionLeft = new Point(32, 0);
+            directionRight = new Point(-32, 0);
+            directionTop = new Point(0, -32);
+            directionBottom = new Point(0, 32);
+
 
             IEnumerable<Control> controls = Controls.Cast<Control>();
             snake.AddRange(controls.Where(x => x.Name.Contains("snake") && x is Panel).ToArray().Cast<Panel>().Reverse());
@@ -71,35 +81,35 @@ namespace FormsSnake
         {
             if (e.KeyData == Keys.W || e.KeyData == Keys.Up)
             {
-                if (directionSnake != new Point(0, 32))
+                if (directionSnake != directionBottom)
                 {
-                    directionSnake = new Point(0, -32);
+                    directionSnake = directionTop;
                 }
             }
             else if (e.KeyData == Keys.S || e.KeyData == Keys.Down)
             {
-                if (directionSnake != new Point(0, -32))
+                if (directionSnake != directionTop)
                 {
-                    directionSnake = new Point(0, 32);
+                    directionSnake = directionBottom;
                 }
             }
             else if (e.KeyData == Keys.A || e.KeyData == Keys.Left)
             {
-                if (directionSnake != new Point(32, 0))
+                if (directionSnake != directionLeft)
                 {
-                    directionSnake = new Point(-32, 0);
+                    directionSnake = directionRight;
                 }
             }
             else if (e.KeyData == Keys.D || e.KeyData == Keys.Right)
             {
-                if (directionSnake != new Point(-32, 0))
+                if (directionSnake != directionRight)
                 {
-                    directionSnake = new Point(32, 0);
+                    directionSnake = directionLeft;
                 }
             }
             else if (e.KeyData == Keys.Escape)
             {
-                this.Close();
+                Close();
             }
         }
 
@@ -196,8 +206,9 @@ namespace FormsSnake
                 }
                 else
                 {
-                    MessageBox.Show("Ты дебил");
+                    throw new ApplicationException();
                 }
+
                 for(int i = lengthSnake; i >= 0; i--)
                 {
                     snake[i].Location = pointsSnake[i];
