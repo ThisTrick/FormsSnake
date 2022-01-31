@@ -10,7 +10,7 @@ namespace FormsSnake.Tests.ModelTests
         public void GetLengthAfterCreationReturn3()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateSnakeModel();
             //Act
             int length = snakeModel.GetLength();
             //Assert
@@ -21,7 +21,7 @@ namespace FormsSnake.Tests.ModelTests
         public void EatAnAppleReturnLengthEqual4()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateSnakeModel();
             //Act
             snakeModel.EatAnApple();
             int length = snakeModel.GetLength();
@@ -33,7 +33,7 @@ namespace FormsSnake.Tests.ModelTests
         public void HasAliveAfterCreationReturnTrue()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateSnakeModel();
             //Act
             bool isAlive = snakeModel.HasAlive();
             //Assert
@@ -44,9 +44,8 @@ namespace FormsSnake.Tests.ModelTests
         public void HasAliveAfterDieReturnFalse()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateDeathSnakeModel();
             //Act
-            snakeModel.Die();
             bool isAlive = snakeModel.HasAlive();
             //Assert
             Assert.False(isAlive);
@@ -56,43 +55,37 @@ namespace FormsSnake.Tests.ModelTests
         public void HasAliveAfterRebornAfterDieReturnTrue()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateRebornSnakeModel();
             //Act
-            snakeModel.Die();
-            snakeModel.Reborn();
             bool isAlive = snakeModel.HasAlive();
             //Assert
             Assert.True(isAlive);
         }
 
         [Fact]
-        public void DieAfterDieReturnExeption()
+        public void DieAfterDieReturnModelExeption()
         {
-            //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
-            //Act
-            snakeModel.Die();
+            //Arrange and Act
+            ISnakeModel snakeModel = CreateDeathSnakeModel();
             //Assert
             Assert.Throws<ModelException>(() => snakeModel.Die());
         }
 
         [Fact]
-        public void RebornBeforeDieReturnExeption()
+        public void RebornBeforeDieReturnModelExeption()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateSnakeModel();
             //Act
             //Assert
             Assert.Throws<ModelException>(() => snakeModel.Reborn());
         }
 
         [Fact]
-        public void GetLengthAfterDieReturnExeption()
+        public void GetLengthAfterDieReturnModelExeption()
         {
-            //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
-            //Act
-            snakeModel.Die();
+            //Arrange and Act
+            ISnakeModel snakeModel = CreateDeathSnakeModel();
             //Assert
             Assert.Throws<ModelException>(() => snakeModel.GetLength());
         }
@@ -101,13 +94,30 @@ namespace FormsSnake.Tests.ModelTests
         public void GetLengthAfterRebornReturn3()
         {
             //Arrange
-            ISnakeModel snakeModel = new SnakeModel();
+            ISnakeModel snakeModel = CreateRebornSnakeModel();
             //Act
-            snakeModel.Die();
-            snakeModel.Reborn();
             var length = snakeModel.GetLength();
             //Assert
             Assert.Equal(3, length);
+        }
+
+        private ISnakeModel CreateSnakeModel()
+        {
+            return new SnakeModel();
+        } 
+
+        private ISnakeModel CreateDeathSnakeModel()
+        {
+            var snakeModel = CreateSnakeModel();
+            snakeModel.Die();
+            return snakeModel;
+        }
+
+        private ISnakeModel CreateRebornSnakeModel()
+        {
+            var snakeModel = CreateDeathSnakeModel();
+            snakeModel.Reborn();
+            return snakeModel;
         }
 
     }
