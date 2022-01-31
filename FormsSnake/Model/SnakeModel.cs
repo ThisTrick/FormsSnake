@@ -19,7 +19,7 @@ namespace FormsSnake.Model
             throw new NotImplementedException();
         }
 
-        public bool IsAlive()
+        public bool HasAlive()
         {
             throw new NotImplementedException();
         }

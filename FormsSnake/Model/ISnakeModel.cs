@@ -27,6 +27,6 @@
         /// Checking the alive of a snake
         /// </summary>
         /// <returns>Alive status</returns>
-        bool IsAlive();
+        bool HasAlive();
     }
 }

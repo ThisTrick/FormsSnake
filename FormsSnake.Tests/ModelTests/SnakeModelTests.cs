@@ -30,37 +30,37 @@ namespace FormsSnake.Tests.ModelTests
         }
 
         [Fact]
-        public void IsAliveAfterCreationReturnTrue()
+        public void HasAliveAfterCreationReturnTrue()
         {
             //Arrange
             ISnakeModel snakeModel = new SnakeModel();
             //Act
-            bool isAlive = snakeModel.IsAlive();
+            bool isAlive = snakeModel.HasAlive();
             //Assert
             Assert.True(isAlive);
         }
 
         [Fact]
-        public void IsAliveAfterDieReturnFalse()
+        public void HasAliveAfterDieReturnFalse()
         {
             //Arrange
             ISnakeModel snakeModel = new SnakeModel();
             //Act
             snakeModel.Die();
-            bool isAlive = snakeModel.IsAlive();
+            bool isAlive = snakeModel.HasAlive();
             //Assert
             Assert.False(isAlive);
         }
 
         [Fact]
-        public void IsAliveAfterRebornAfterDieReturnTrue()
+        public void HasAliveAfterRebornAfterDieReturnTrue()
         {
             //Arrange
             ISnakeModel snakeModel = new SnakeModel();
             //Act
             snakeModel.Die();
             snakeModel.Reborn();
-            bool isAlive = snakeModel.IsAlive();
+            bool isAlive = snakeModel.HasAlive();
             //Assert
             Assert.True(isAlive);
         }
