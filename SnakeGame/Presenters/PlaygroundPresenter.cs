@@ -31,30 +31,17 @@ namespace FormsSnake.Presenters
         private void OnLoad(object sender, EventArgs e)
         {
             _snake = new List<SnakePartView>() {
-                CreateSnakePart(new Point(96, 64)),
-                CreateSnakePart(new Point(64, 64)),
-                CreateSnakePart(new Point(32, 64)),
+                new SnakePartView(){ Location = new Point(96, 64) },
+                new SnakePartView(){ Location = new Point(64, 64) },
+                new SnakePartView(){ Location = new Point(32, 64) },
             };
+            
             _snake.ForEach(p => _view.AddControl(p));
-            _apple = CreateApplePanel(new Point(96, 96));
+            _apple = new AppleView() { Location = new Point(96, 96) };
             _view.AddControl(_apple);
             _view.SetScore(CalcScore());
         }
         
-        private SnakePartView CreateSnakePart(Point location)
-        {
-            var snakePart = new SnakePartView();
-            snakePart.Location = location;
-            return snakePart;
-        }
-        
-        private AppleView CreateApplePanel(Point location)
-        {
-            var applePanel = new AppleView();
-            applePanel.Location = location;
-            return applePanel;
-        }
-
         private int CalcScore() => _snake.Count - 3;
         
         private void OnGameTick(object sender, EventArgs e)
@@ -105,7 +92,7 @@ namespace FormsSnake.Presenters
             {
                 _apple.Location = new Point(32 * _rand.Next(1, 19), 32 * _rand.Next(1, 19));
                 var location = new Point(_snake.Last().Location.X, _snake.Last().Location.Y);
-                _snake.Add(CreateSnakePart(location));
+                _snake.Add(new SnakePartView{Location = location});
                 _view.AddControl(_snake.Last());
                 _view.SetScore(CalcScore());
             }
