@@ -1,4 +1,4 @@
-﻿namespace FormsSnake
+﻿namespace FormsSnake.Views
 {
     partial class PlaygroundView
     {
@@ -36,7 +36,6 @@
             // SnakeGo
             // 
             this.SnakeGo.Enabled = true;
-            this.SnakeGo.Tick += new System.EventHandler(this.SnakeGo_Tick);
             // 
             // Count
             // 
@@ -65,8 +64,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 748);
             this.Name = "PlaygroundView";
             this.Text = "Form1";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlaygroundView_MouseDown);
             this.ResumeLayout(false);
 
         }
