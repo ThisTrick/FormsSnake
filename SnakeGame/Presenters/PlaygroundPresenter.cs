@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using FormsSnake.Models;
 using FormsSnake.Views;
@@ -13,7 +14,7 @@ namespace FormsSnake.Presenters
         private readonly PlaygroundModel _model;
         private readonly Random _rand;
         
-        private List<Panel> _snake;
+        private List<SnakePartView> _snake;
         private AppleView _apple;
 
         public PlaygroundPresenter(IPlaygroundView view)
@@ -29,32 +30,23 @@ namespace FormsSnake.Presenters
 
         private void OnLoad(object sender, EventArgs e)
         {
-            _snake = new List<Panel>() {
-                CreateSnakeItem(new Point(96, 64)),
-                CreateSnakeItem(new Point(64, 64)),
-                CreateSnakeItem(new Point(32, 64)),
+            _snake = new List<SnakePartView>() {
+                CreateSnakePart(new Point(96, 64)),
+                CreateSnakePart(new Point(64, 64)),
+                CreateSnakePart(new Point(32, 64)),
             };
+            _snake.ForEach(p => _view.AddControl(p));
             _apple = CreateApplePanel(new Point(96, 96));
             _view.AddControl(_apple);
             _view.SetScore(CalcScore());
         }
         
-        private Panel CreateSnakeItem(Point location)
+        private SnakePartView CreateSnakePart(Point location)
         {
-            var snakeItem = CreatePanel(location);
-            snakeItem.BackColor = SystemColors.Info;
-            return snakeItem;
+            var snakePart = new SnakePartView();
+            snakePart.Location = location;
+            return snakePart;
         }
-        
-        private Panel CreatePanel(Point location)
-        {
-            var panel = new Panel();
-            panel.Size = new Size(26, 26);
-            panel.Location = location;
-            _view.AddControl(panel);
-            return panel;
-        }
-        
         
         private AppleView CreateApplePanel(Point location)
         {
@@ -112,8 +104,9 @@ namespace FormsSnake.Presenters
             if (_snake[0].Location == _apple.Location)
             {
                 _apple.Location = new Point(32 * _rand.Next(1, 19), 32 * _rand.Next(1, 19));
-                var location = new Point(_snake[_snake.Count - 2].Location.X, _snake[_snake.Count - 2].Location.Y);
-                _snake.Add(CreateSnakeItem(location));
+                var location = new Point(_snake.Last().Location.X, _snake.Last().Location.Y);
+                _snake.Add(CreateSnakePart(location));
+                _view.AddControl(_snake.Last());
                 _view.SetScore(CalcScore());
             }
         }
