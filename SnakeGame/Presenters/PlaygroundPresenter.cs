@@ -14,7 +14,7 @@ namespace FormsSnake.Presenters
         private readonly Random _rand;
         
         private List<Panel> _snake;
-        private Panel _apple;
+        private AppleView _apple;
 
         public PlaygroundPresenter(IPlaygroundView view)
         {
@@ -35,6 +35,7 @@ namespace FormsSnake.Presenters
                 CreateSnakeItem(new Point(32, 64)),
             };
             _apple = CreateApplePanel(new Point(96, 96));
+            _view.AddControl(_apple);
             _view.SetScore(CalcScore());
         }
         
@@ -55,11 +56,10 @@ namespace FormsSnake.Presenters
         }
         
         
-        private Panel CreateApplePanel(Point location)
+        private AppleView CreateApplePanel(Point location)
         {
-            var applePanel = CreatePanel(location);
-            applePanel.BackColor = SystemColors.Highlight;
-            applePanel.Name = "Apple";
+            var applePanel = new AppleView();
+            applePanel.Location = location;
             return applePanel;
         }
 
