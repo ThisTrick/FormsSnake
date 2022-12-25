@@ -1,6 +1,6 @@
 ﻿namespace FormsSnake
 {
-    partial class Form1
+    partial class PlaygroundView
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -63,7 +63,7 @@
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(800, 748);
             this.MinimumSize = new System.Drawing.Size(800, 748);
-            this.Name = "Form1";
+            this.Name = "PlaygroundView";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);

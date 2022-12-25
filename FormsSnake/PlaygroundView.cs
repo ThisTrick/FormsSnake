@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace FormsSnake
 {
-    public partial class Form1 : Form
+    public partial class PlaygroundView : Form
     {
         #region Перемещение окна
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -21,34 +21,36 @@ namespace FormsSnake
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
         #endregion
-        private int space;
-        private Point directionSnake;
-        private List<Panel> snake;
-        private Panel apple;
-        public Random rand;
-        private Point directionLeft;
-        private Point directionRight;
-        private Point directionTop;
-        private Point directionBottom;
+        
+        
+        private readonly int _space;
+        private Point _directionSnake;
+        private readonly List<Panel> _snake;
+        private readonly Panel _apple;
+        private readonly Random _rand;
+        private readonly Point _directionLeft;
+        private readonly Point _directionRight;
+        private readonly Point _directionTop;
+        private readonly Point _directionBottom;
 
-        public Form1()
+        public PlaygroundView()
         {
             InitializeComponent();
 
-            space = 576;
-            directionLeft = new Point(32, 0);
-            directionRight = new Point(-32, 0);
-            directionTop = new Point(0, -32);
-            directionBottom = new Point(0, 32);
-            directionSnake = directionLeft;
-            snake = new List<Panel>() {
+            _space = 576;
+            _directionLeft = new Point(32, 0);
+            _directionRight = new Point(-32, 0);
+            _directionTop = new Point(0, -32);
+            _directionBottom = new Point(0, 32);
+            _directionSnake = _directionLeft;
+            _snake = new List<Panel>() {
                 CreateSnakeItem(new Point(96, 64)),
                 CreateSnakeItem(new Point(64, 64)),
                 CreateSnakeItem(new Point(32, 64)),
             };
-            rand = new Random(Guid.NewGuid().GetHashCode());
-            apple = CreateApplePanel(new Point(96, 96));
-            Count.Text = (snake.Count() - 3).ToString();
+            _rand = new Random(Guid.NewGuid().GetHashCode());
+            _apple = CreateApplePanel(new Point(96, 96));
+            Count.Text = (_snake.Count() - 3).ToString();
         }
 
         /// <summary>
@@ -60,30 +62,30 @@ namespace FormsSnake
         {
             if (e.KeyData == Keys.W || e.KeyData == Keys.Up)
             {
-                if (directionSnake != directionBottom)
+                if (_directionSnake != _directionBottom)
                 {
-                    directionSnake = directionTop;
+                    _directionSnake = _directionTop;
                 }
             }
             else if (e.KeyData == Keys.S || e.KeyData == Keys.Down)
             {
-                if (directionSnake != directionTop)
+                if (_directionSnake != _directionTop)
                 {
-                    directionSnake = directionBottom;
+                    _directionSnake = _directionBottom;
                 }
             }
             else if (e.KeyData == Keys.A || e.KeyData == Keys.Left)
             {
-                if (directionSnake != directionLeft)
+                if (_directionSnake != _directionLeft)
                 {
-                    directionSnake = directionRight;
+                    _directionSnake = _directionRight;
                 }
             }
             else if (e.KeyData == Keys.D || e.KeyData == Keys.Right)
             {
-                if (directionSnake != directionRight)
+                if (_directionSnake != _directionRight)
                 {
-                    directionSnake = directionLeft;
+                    _directionSnake = _directionLeft;
                 }
             }
             else if (e.KeyData == Keys.Escape)
@@ -99,7 +101,7 @@ namespace FormsSnake
         /// <param name="e"></param>
         private void SnakeGo_Tick(object sender, EventArgs e)
         {
-            if (snake[0].Location.X <= space && snake[0].Location.Y <= space && snake[0].Location.X >= 0 && snake[0].Location.Y >= 0)
+            if (_snake[0].Location.X <= _space && _snake[0].Location.Y <= _space && _snake[0].Location.X >= 0 && _snake[0].Location.Y >= 0)
             {
                 SnakeMoving();
                 EatAnApple();
@@ -152,12 +154,12 @@ namespace FormsSnake
         /// </summary>
         private void SnakeDeath()
         {
-            for (int j = snake.Count() - 1; j > 2; j--)
+            for (int j = _snake.Count() - 1; j > 2; j--)
             {
-                Controls.Remove(snake[j]);
-                snake.Remove(snake[j]);
+                Controls.Remove(_snake[j]);
+                _snake.Remove(_snake[j]);
             }
-            Count.Text = (snake.Count() - 3).ToString();
+            Count.Text = (_snake.Count() - 3).ToString();
         }
 
         /// <summary>
@@ -165,17 +167,17 @@ namespace FormsSnake
         /// </summary>
         private void SnakeMoving()
         {
-            for (int i = snake.Count() - 1; i > 0; i--)
+            for (int i = _snake.Count() - 1; i > 0; i--)
             {
-                var tmp = snake[i - 1].Location;
-                snake[i].Location = tmp;
-                if (i != 1 && snake[0].Location == snake[i].Location)
+                var tmp = _snake[i - 1].Location;
+                _snake[i].Location = tmp;
+                if (i != 1 && _snake[0].Location == _snake[i].Location)
                 {
                     SnakeDeath();
                     return;
                 }
             } 
-            snake[0].Location = new Point(snake[0].Location.X + directionSnake.X, snake[0].Location.Y + directionSnake.Y);
+            _snake[0].Location = new Point(_snake[0].Location.X + _directionSnake.X, _snake[0].Location.Y + _directionSnake.Y);
         }
 
         /// <summary>
@@ -183,12 +185,12 @@ namespace FormsSnake
         /// </summary>
         private void EatAnApple()
         {
-            if (snake[0].Location == apple.Location)
+            if (_snake[0].Location == _apple.Location)
             {
-                apple.Location = new Point(32 * rand.Next(1, 19), 32 * rand.Next(1, 19));
-                var location = new Point(snake[snake.Count() - 2].Location.X, snake[snake.Count() - 2].Location.Y);
-                snake.Add(CreateSnakeItem(location));
-                Count.Text = (snake.Count() - 3).ToString();
+                _apple.Location = new Point(32 * _rand.Next(1, 19), 32 * _rand.Next(1, 19));
+                var location = new Point(_snake[_snake.Count() - 2].Location.X, _snake[_snake.Count() - 2].Location.Y);
+                _snake.Add(CreateSnakeItem(location));
+                Count.Text = (_snake.Count() - 3).ToString();
             }
         }
 
@@ -198,10 +200,10 @@ namespace FormsSnake
         private void SnakeStartingPoint()
         {
             SnakeDeath();
-            snake[0].Location = new Point(96, 64);
-            snake[1].Location = new Point(64, 64);
-            snake[2].Location = new Point(32, 64);
-            directionSnake = directionLeft;
+            _snake[0].Location = new Point(96, 64);
+            _snake[1].Location = new Point(64, 64);
+            _snake[2].Location = new Point(32, 64);
+            _directionSnake = _directionLeft;
         }
     }
 }
