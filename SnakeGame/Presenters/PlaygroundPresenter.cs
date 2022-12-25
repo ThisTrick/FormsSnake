@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using FormsSnake.Models;
 using FormsSnake.Views;
@@ -14,7 +12,7 @@ namespace FormsSnake.Presenters
         private readonly PlaygroundModel _model;
         private readonly Random _rand;
         
-        private List<SnakePartView> _snake;
+        private SnakeView _snake;
         private AppleView _apple;
 
         public PlaygroundPresenter(IPlaygroundView view)
@@ -30,13 +28,12 @@ namespace FormsSnake.Presenters
 
         private void OnLoad(object sender, EventArgs e)
         {
-            _snake = new List<SnakePartView>() {
-                new SnakePartView(){ Location = new Point(96, 64) },
-                new SnakePartView(){ Location = new Point(64, 64) },
-                new SnakePartView(){ Location = new Point(32, 64) },
-            };
+            _snake = new SnakeView();
+            _snake.Died += OnSnakeDeath;
+
+            foreach (Control control in _snake.GetControls())
+                _view.AddControl(control);
             
-            _snake.ForEach(p => _view.AddControl(p));
             _apple = new AppleView() { Location = new Point(96, 96) };
             _view.AddControl(_apple);
             _view.SetScore(CalcScore());
@@ -46,65 +43,36 @@ namespace FormsSnake.Presenters
         
         private void OnGameTick(object sender, EventArgs e)
         {
-            if (_snake[0].Location.X <= _model.Space 
-                && _snake[0].Location.Y <= _model.Space 
-                && _snake[0].Location.X >= 0 
-                && _snake[0].Location.Y >= 0)
-            {
-                SnakeMoving();
-                EatAnApple();
-            }
-            else
-            {
-                SnakeStartingPoint();
-            }
-        }
-        
-        private void SnakeMoving()
-        {
-            for (int i = _snake.Count - 1; i > 0; i--)
-            {
-                var tmp = _snake[i - 1].Location;
-                _snake[i].Location = tmp;
-                if (i != 1 && _snake[0].Location == _snake[i].Location)
+           if (SnakeNoHitWall())
+           {
+                _snake.Move(new Point(_model.CurrentDirection.X * _model.Step, _model.CurrentDirection.Y * _model.Step));
+
+                if (SnakeCaughtApple())
                 {
-                    SnakeDeath();
-                    return;
+                    _apple.Location = new Point(32 * _rand.Next(1, 19), 32 * _rand.Next(1, 19));
+                    _view.AddControl(_snake.EatApple());
+                    _view.SetScore(CalcScore());
                 }
-            } 
-            _snake[0].Location = new Point(_snake[0].Location.X + _model.CurrentDirection.X * _model.Step,
-                _snake[0].Location.Y + _model.CurrentDirection.Y * _model.Step);
+                return;
+           }
+           
+           OnSnakeDeath();
         }
         
-        private void SnakeDeath()
-        {
-            for (int j = _snake.Count - 1; j > 2; j--)
-            {
-                _view.RemoveControl(_snake[j]);
-                _snake.Remove(_snake[j]);
-            }
-            _view.SetScore(CalcScore());
-        }
+        private bool SnakeNoHitWall() => _snake.Location.X <= _model.Space
+                                         && _snake.Location.Y <= _model.Space
+                                         && _snake.Location.X >= 0
+                                         && _snake.Location.Y >= 0;
+
+        private bool SnakeCaughtApple() => _snake.Location == _apple.Location;
         
-        private void EatAnApple()
+        private void OnSnakeDeath()
         {
-            if (_snake[0].Location == _apple.Location)
-            {
-                _apple.Location = new Point(32 * _rand.Next(1, 19), 32 * _rand.Next(1, 19));
-                var location = new Point(_snake.Last().Location.X, _snake.Last().Location.Y);
-                _snake.Add(new SnakePartView{Location = location});
-                _view.AddControl(_snake.Last());
-                _view.SetScore(CalcScore());
-            }
-        }
-        
-        private void SnakeStartingPoint()
-        {
-            SnakeDeath();
-            _snake[0].Location = new Point(96, 64);
-            _snake[1].Location = new Point(64, 64);
-            _snake[2].Location = new Point(32, 64);
+            foreach (Control control in _snake.CutTail())
+                _view.RemoveControl(control);
+            _snake.SetDefaultLocationForHead();
             _model.SetDefaultDirection();
+            _view.SetScore(CalcScore());
         }
 
         private void OnKeyDown(object sender, KeyEventArgs e)
