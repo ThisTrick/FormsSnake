@@ -7,7 +7,7 @@
     <ProjectGuid>{064ABA03-C7AD-44C9-87BF-626EFECC87A1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FormsSnake</RootNamespace>
-    <AssemblyName>FormsSnake</AssemblyName>
+    <AssemblyName>SnakeGame</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
