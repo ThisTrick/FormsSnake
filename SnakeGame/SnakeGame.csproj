@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
     <Compile Include="Models\PlaygroundModel.cs" />
     <Compile Include="Presenters\PlaygroundPresenter.cs" />
     <Compile Include="Program.cs" />

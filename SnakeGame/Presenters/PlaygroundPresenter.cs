@@ -35,7 +35,7 @@ namespace FormsSnake.Presenters
                 CreateSnakeItem(new Point(32, 64)),
             };
             _apple = CreateApplePanel(new Point(96, 96));
-            _view.SetScore(_snake.Count - 3);
+            _view.SetScore(CalcScore());
         }
         
         private Panel CreateSnakeItem(Point location)
@@ -62,6 +62,8 @@ namespace FormsSnake.Presenters
             applePanel.Name = "Apple";
             return applePanel;
         }
+
+        private int CalcScore() => _snake.Count - 3;
         
         private void OnGameTick(object sender, EventArgs e)
         {
@@ -91,8 +93,8 @@ namespace FormsSnake.Presenters
                     return;
                 }
             } 
-            _snake[0].Location = new Point(_snake[0].Location.X + _model.DirectionSnake.X * _model.Step,
-                _snake[0].Location.Y + _model.DirectionSnake.Y * _model.Step);
+            _snake[0].Location = new Point(_snake[0].Location.X + _model.CurrentDirection.X * _model.Step,
+                _snake[0].Location.Y + _model.CurrentDirection.Y * _model.Step);
         }
         
         private void SnakeDeath()
@@ -102,7 +104,7 @@ namespace FormsSnake.Presenters
                 _view.RemoveControl(_snake[j]);
                 _snake.Remove(_snake[j]);
             }
-            _view.SetScore(_snake.Count - 3);
+            _view.SetScore(CalcScore());
         }
         
         private void EatAnApple()
@@ -112,7 +114,7 @@ namespace FormsSnake.Presenters
                 _apple.Location = new Point(32 * _rand.Next(1, 19), 32 * _rand.Next(1, 19));
                 var location = new Point(_snake[_snake.Count - 2].Location.X, _snake[_snake.Count - 2].Location.Y);
                 _snake.Add(CreateSnakeItem(location));
-                _view.SetScore(_snake.Count - 3);
+                _view.SetScore(CalcScore());
             }
         }
         
@@ -122,45 +124,25 @@ namespace FormsSnake.Presenters
             _snake[0].Location = new Point(96, 64);
             _snake[1].Location = new Point(64, 64);
             _snake[2].Location = new Point(32, 64);
-            _model.DirectionSnake = _model.DirectionLeft;
-        }
-        
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.W || e.KeyData == Keys.Up)
-            {
-                if (_model.DirectionSnake != _model.DirectionBottom)
-                {
-                    _model.DirectionSnake = _model.DirectionTop;
-                }
-            }
-            else if (e.KeyData == Keys.S || e.KeyData == Keys.Down)
-            {
-                if (_model.DirectionSnake !=  _model.DirectionTop)
-                {
-                    _model.DirectionSnake = _model.DirectionBottom;
-                }
-            }
-            else if (e.KeyData == Keys.A || e.KeyData == Keys.Left)
-            {
-                if (_model.DirectionSnake != _model.DirectionLeft)
-                {
-                    _model.DirectionSnake = _model.DirectionRight;
-                }
-            }
-            else if (e.KeyData == Keys.D || e.KeyData == Keys.Right)
-            {
-                if (_model.DirectionSnake != _model.DirectionRight)
-                {
-                    _model.DirectionSnake = _model.DirectionLeft;
-                }
-            }
-            else if (e.KeyData == Keys.Escape)
-            {
-                _view.Close();
-            }
+            _model.SetDefaultDirection();
         }
 
-        
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Escape)
+                _view.Close();
+
+            if (e.KeyData == Keys.W || e.KeyData == Keys.Up)
+                _model.SetDirection(Direction.Top);
+
+            if (e.KeyData == Keys.S || e.KeyData == Keys.Down)
+                _model.SetDirection(Direction.Bottom);
+
+            if (e.KeyData == Keys.A || e.KeyData == Keys.Left)
+                _model.SetDirection(Direction.Left);
+
+            if (e.KeyData == Keys.D || e.KeyData == Keys.Right)
+                _model.SetDirection(Direction.Right);
+        }
     }
 }
